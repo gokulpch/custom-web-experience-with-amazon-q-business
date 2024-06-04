@@ -6,17 +6,29 @@ import streamlit as st  #all streamlit commands will be available through the "s
 import utils
 from streamlit_feedback import streamlit_feedback
 
+# Add custom CSS to change the background color to orange
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #FFA500; /* Orange color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 UTC=timezone.utc
 
 # Init configuration
 utils.retrieve_config_from_agent()
 
-st.set_page_config(page_title="Amazon Q Business Custom UI") #HTML title
-st.title("Amazon Q Business Custom UI") #page title
+st.set_page_config(page_title="Amazon Q Business Custom UI - Acme Telecom Customer Churn Analysis") #HTML title
+st.title("Amazon Q Business Custom UI - Acme Telecom Customer Churn Analysis") #page title
 
 # Define a function to clear the chat history
 def clear_chat_history():
-    st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+    st.session_state.messages = [{"role": "assistant", "content": "Hello Acme Member, Ask a Question..."}]
     st.session_state.questions = []
     st.session_state.answers = []
     st.session_state.input = ""
